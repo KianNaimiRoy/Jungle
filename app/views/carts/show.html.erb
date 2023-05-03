@@ -4,6 +4,11 @@
     <h1>My Cart</h1>
   </header>
 
+      <% if enhanced_cart.empty? %>
+      <p class="alert alert-primary" role="alert">Looks like you don't have anything in your shopping cart!</p>
+        <%= link_to "Continue shopping", "/", class: "btn btn-primary" %>
+        <%else%> 
+
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -34,6 +39,7 @@
 
   <div class="row">
     <div class="col-xs-12">
+  
       <%= form_tag orders_path do %>
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -44,8 +50,10 @@
           data-locale="auto"
           data-email="kvirani@gmail.com"
           data-currency="cad">
-        </script>
+        </script> <%# stripe button %>
+       <% end %>
       <% end %>
+    
     </div>
   </div>
 
